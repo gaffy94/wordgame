@@ -6,13 +6,14 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public interface UserWordsDao extends JpaRepository<UserWords,Long> {
     List<UserWords> findByUserId(Long id);
-    Optional<UserWords> findByUserIdAndWordAndAnagramId(Long id, String word, Long id1);
+    Optional<UserWords> findByUserIdAndWordAndAnagramId(UUID id, String word, Long id1);
 
-    Optional<UserWords> findByUserIdAndWordIgnoreCaseAndAnagramId(Long id, String word, Long id1);
+    Optional<UserWords> findByUserIdAndWordIgnoreCaseAndAnagramId(UUID id, String word, UUID id1);
 
-    List<UserWords> findByUserIdAndAnagramId(Long id, Long level);
+    List<UserWords> findByUserIdAndAnagramId(UUID id, UUID level);
 }

@@ -2,6 +2,7 @@ package com.gaf.anagram.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.UUID;
 
 @Entity
 @Table(name = "anagrams")
@@ -10,7 +11,7 @@ public class Anagrams implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private UUID id;
     @Column(name = "level")
     private Long level;
     @Column(name = "word", unique = true)
@@ -18,11 +19,11 @@ public class Anagrams implements Serializable {
     @Column(name = "description")
     private String description;
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
