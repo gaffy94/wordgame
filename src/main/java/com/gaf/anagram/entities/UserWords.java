@@ -3,6 +3,7 @@ package com.gaf.anagram.entities;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Table(name = "userwords")
@@ -11,9 +12,10 @@ public class UserWords implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private UUID id;
+
     @Column(name = "userid")
-    private Long userId;
+    private UUID userId;
 
     @ManyToOne
     @JoinColumn(name = "userid", referencedColumnName = "id", insertable = false, updatable = false)
@@ -27,7 +29,7 @@ public class UserWords implements Serializable {
 
 
     @Column(name = "anagramid")
-    private Long anagramId;
+    private UUID anagramId;
 
     @Column(name = "datecreated")
     @Temporal(TemporalType.TIMESTAMP)
@@ -45,20 +47,16 @@ public class UserWords implements Serializable {
     @JoinColumn(name = "anagramid", referencedColumnName = "id", insertable = false, updatable = false)
     private Anagrams anagrams;
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
-    public Long getUserId() {
+    public UUID getUserId() {
         return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
     }
 
     public User getUser() {
@@ -85,11 +83,15 @@ public class UserWords implements Serializable {
         this.word = word;
     }
 
-    public Long getAnagramId() {
+    public void setUserId(UUID userId) {
+        this.userId = userId;
+    }
+
+    public UUID getAnagramId() {
         return anagramId;
     }
 
-    public void setAnagramId(Long anagramId) {
+    public void setAnagramId(UUID anagramId) {
         this.anagramId = anagramId;
     }
 

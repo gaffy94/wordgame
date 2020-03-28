@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class MyWordService {
@@ -29,7 +30,7 @@ public class MyWordService {
     public Response fetchMyWords(){
         Response resp = new Response();
         try{
-            Long id = userService.getSessionVariables().get().getId();
+            UUID id = userService.getSessionVariables().get().getId();
             Long level = userService.getSessionVariables().get().getLevel();
             Optional<Anagrams> byLevel = anagramsDao.findByLevel(level);
             logger.info("id to check : "+ id);
@@ -48,7 +49,7 @@ public class MyWordService {
     public Response getLevelWords(Long level) {
         Response resp = new Response();
         try{
-            Long id = userService.getSessionVariables().get().getId();
+            UUID id = userService.getSessionVariables().get().getId();
             Optional<Anagrams> byLevel = anagramsDao.findByLevel(level);
             logger.info("id to check : "+ id);
             List<UserWords> byUserId = userWordsDao.findByUserIdAndAnagramId(id,byLevel.get().getId());
