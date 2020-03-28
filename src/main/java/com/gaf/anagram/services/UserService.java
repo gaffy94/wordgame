@@ -61,6 +61,7 @@ public class UserService {
         List<Anagrams> all = anagramsDao.findAll();
         if(l <= all.size()){
             user.setLevel(l);
+            user.setTimeRemaining("120");
         } else {
             user.setCompleted("Y");
         }
