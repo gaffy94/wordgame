@@ -12,10 +12,10 @@ public class UserWords implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Long id;
 
     @Column(name = "userid")
-    private UUID userId;
+    private Long userId;
 
     @ManyToOne
     @JoinColumn(name = "userid", referencedColumnName = "id", insertable = false, updatable = false)
@@ -29,7 +29,7 @@ public class UserWords implements Serializable {
 
 
     @Column(name = "anagramid")
-    private UUID anagramId;
+    private Long anagramId;
 
     @Column(name = "datecreated")
     @Temporal(TemporalType.TIMESTAMP)
@@ -47,15 +47,15 @@ public class UserWords implements Serializable {
     @JoinColumn(name = "anagramid", referencedColumnName = "id", insertable = false, updatable = false)
     private Anagrams anagrams;
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public UUID getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
@@ -83,15 +83,15 @@ public class UserWords implements Serializable {
         this.word = word;
     }
 
-    public void setUserId(UUID userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
-    public UUID getAnagramId() {
+    public Long getAnagramId() {
         return anagramId;
     }
 
-    public void setAnagramId(UUID anagramId) {
+    public void setAnagramId(Long anagramId) {
         this.anagramId = anagramId;
     }
 

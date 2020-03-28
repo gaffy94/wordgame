@@ -11,7 +11,7 @@ public class Anagrams implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Long id;
     @Column(name = "level")
     private Long level;
     @Column(name = "word", unique = true)
@@ -19,11 +19,11 @@ public class Anagrams implements Serializable {
     @Column(name = "description")
     private String description;
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

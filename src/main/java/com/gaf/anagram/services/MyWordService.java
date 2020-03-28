@@ -30,7 +30,7 @@ public class MyWordService {
     public Response fetchMyWords(){
         Response resp = new Response();
         try{
-            UUID id = userService.getSessionVariables().get().getId();
+            Long id = userService.getSessionVariables().get().getId();
             Long level = userService.getSessionVariables().get().getLevel();
             Optional<Anagrams> byLevel = anagramsDao.findByLevel(level);
             logger.info("id to check : "+ id);
@@ -49,7 +49,7 @@ public class MyWordService {
     public Response getLevelWords(Long level) {
         Response resp = new Response();
         try{
-            UUID id = userService.getSessionVariables().get().getId();
+            Long id = userService.getSessionVariables().get().getId();
             Optional<Anagrams> byLevel = anagramsDao.findByLevel(level);
             logger.info("id to check : "+ id);
             List<UserWords> byUserId = userWordsDao.findByUserIdAndAnagramId(id,byLevel.get().getId());
