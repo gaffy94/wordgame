@@ -39,6 +39,7 @@ public class WordValidatorService {
     public Response validateWord(String word){
         Response resp = new Response();
         try{
+            word =word.trim().toLowerCase();
             Response response = anagramService.fetchAnagramWord();
             // check if i have word under this anagram already
             Optional<UserWords>  isExists = userWordsDao.findByUserIdAndWordIgnoreCaseAndAnagramId(userService.getSessionVariables().get().getId(),word,((Anagrams) response.getData()).getId());
@@ -48,7 +49,7 @@ public class WordValidatorService {
                 return resp;
             }
 
-            if(!isContains(word,((Anagrams) response.getData()).getWord())){
+            if(!isContains(word,((Anagrams) response.getData()).getWord().trim().toLowerCase())){
                 resp.setResponseCode("999");
                 resp.setResponseMessage("Invalid Word");
                 return resp;

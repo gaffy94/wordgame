@@ -4,7 +4,7 @@ applications:
   instances: 1
   path: target/anagram-0.0.1-SNAPSHOT.jar
   buildpack: java_buildpack
-  env:
-    SPRING_PROFILES_ACTIVE: uat
+#  env:
+#    SPRING_PROFILES_ACTIVE: uat
   services:
-    - aimsmysql
+    - anagrampostgres
